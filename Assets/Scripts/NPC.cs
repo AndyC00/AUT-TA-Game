@@ -10,20 +10,10 @@ public class NPC : MonoBehaviour
     private bool haveInteracted = false;
     private Animator animator;
 
-    // For use in tutorial scene:
-    public bool waitingForKeysInput = false;
-    public bool waitingForleftInput = false;
-    public bool waitingForRightInput = false;
-
     private void Start()
     {
-        animator = GetComponent<Animator>();
 
-        // trigger tutorial conversation once loaded into the tutorial scene
-        if (SceneManager.GetActiveScene().name == "Tutorial Scene")
-        {
-            TriggerConversation();
-        }
+
     }
 
     //show conversation UI once NPC touch the player
@@ -85,31 +75,6 @@ public class NPC : MonoBehaviour
         }
     }
 
-    private void TriggerConversation()
-    {
-        if (!haveInteracted)
-        {
-            haveInteracted = true;
-
-            if (animator != null)
-            {
-                animator.SetBool("isTalking", true);
-            }
-
-            System.Action<bool> onConversationEnd = (bool isCancelled) =>
-            {
-                haveInteracted = false;
-
-                if (animator != null)
-                {
-                    animator.SetBool("isTalking", false);
-                }
-            };
-
-            ConversationSystem.Instance.Show(this, npcName, conversationNodes, CharacterImage, onConversationEnd);
-        }
-    }
-
     public void ResumeConversation(int startIndex)
     {
         if (animator != null)
@@ -127,31 +92,6 @@ public class NPC : MonoBehaviour
             }
         };
 
-        ConversationSystem.Instance.Show(this, npcName, conversationNodes, CharacterImage, onConversationEnd, startIndex);
-    }
-
-    // trigger the conversation to resume when the player has pressed all the arrow keys
-    public void OnConversationAdvance(int currentIndex)
-    {
-        if (currentIndex == 3)
-        {
-            ConversationSystem.Instance.Hide();
-
-            waitingForKeysInput = true;
-        }
-
-        if (currentIndex == 4)
-        {
-            ConversationSystem.Instance.Hide();
-
-            waitingForleftInput = true;
-        }
-
-        if (currentIndex == 5)
-        {
-            ConversationSystem.Instance.Hide();
-
-            waitingForRightInput = true;
-        }
+        ConversationSystem.Instance.Show(this, npcName, conversationNodes, CharacterImage, onConversationEnd);
     }
 }
