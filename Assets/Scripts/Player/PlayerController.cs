@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerControl : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -10,14 +11,13 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerControls controls;
 
-    private float moveInput;     // ?? X?-1 ~ 1?
+    private float moveInput;
     private bool jumpQueued;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // ????????
         controls = new PlayerControls();
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>().x;
@@ -31,14 +31,13 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        // ? ??????????????
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        // rigidbody2D physics handle
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // ? ??????????“y ???0 ?????”?
-        if (jumpQueued && Mathf.Abs(rb.velocity.y) < 0.001f)
+        if (jumpQueued && Mathf.Abs(rb.linearVelocity.y) < 0.001f)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        jumpQueued = false;   // ??????
+        jumpQueued = false;
     }
 }

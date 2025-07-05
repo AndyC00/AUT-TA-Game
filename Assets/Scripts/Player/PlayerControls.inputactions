@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "363cbd19-79a4-4b90-90ab-37d2ab86b3d8",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -26,20 +26,42 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "00a9ae1f-d852-45e7-a055-ced05decad00",
-                    "path": "",
+                    "name": "1D Axis",
+                    "id": "2bebe782-c5cc-4d92-a535-814ef7db09e4",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "d2abb62f-219d-4d86-8a34-62bdcd302d1d",
+                    "path": "<Keyboard>/a, <Keyboard>/LeftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "ab3a0f11-a19f-406d-812d-5322417042d0",
+                    "path": "<Keyboard>/rightArrow, <Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "754e0dcf-faf0-488e-ab1c-cd3ff30f9df1",
-                    "path": "",
+                    "id": "71a32567-ccd1-49e0-a700-07f5f59b8a86",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
