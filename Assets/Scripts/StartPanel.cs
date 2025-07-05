@@ -8,9 +8,8 @@ public class StartPanel : MonoBehaviour
         
     }
 
-    void Update()   // press Enter to hide this panel
+    void Update()   // press Enter to hide this panel (new Unity input system)
     {
-
         if (Keyboard.current == null) { Debug.Log("keyboard doesn't applied!"); return; }
 
         if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame)
