@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
 
         controls = new PlayerControls();
 
-        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>().x;
+        controls.Player.Move.performed += ctx =>
+        {
+            //Debug.Log($"MoveInput = {moveInput}");
+            moveInput = ctx.ReadValue<Vector2>().x;
+        };
         controls.Player.Move.canceled += _ => moveInput = 0f;
 
         controls.Player.Jump.performed += _ => jumpQueued = true;
