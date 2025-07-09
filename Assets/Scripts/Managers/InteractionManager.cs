@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class InteractionNPC : MonoBehaviour
+public class InteractionManager : MonoBehaviour
 {
     [SerializeField] private GameObject interactionButton;
 
@@ -19,9 +20,9 @@ public class InteractionNPC : MonoBehaviour
             interactionButton.gameObject.SetActive(true);
             interactionButton.transform.position = transform.position + new Vector3(-1, 3, 0);
 
-            if ()
-            { 
-                
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                // Trigger interaction here
             }
         }
     }
