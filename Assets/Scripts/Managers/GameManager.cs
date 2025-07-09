@@ -3,15 +3,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // singleton pattern
-    public static GameManager Instance { get; private set; }
+    public static GameManager instance { get; private set; }
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 

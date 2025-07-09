@@ -945,6 +945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707538103}
   - component: {fileID: 707538102}
+  - component: {fileID: 707538104}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -979,6 +980,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707538104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707538100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd285b052eae594e98179d795c0db7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMouseIcon: {fileID: 2800000, guid: d7c2e5b52aef3834984c792b0d3f2ea0, type: 3}
+  pressedMouseIcon: {fileID: 2800000, guid: be23039664c76574fafe664ada13ae33, type: 3}
 --- !u!1 &850159319
 GameObject:
   m_ObjectHideFlags: 0
