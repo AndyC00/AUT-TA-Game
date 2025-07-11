@@ -8,6 +8,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private Sprite CharacterImage;
     public string[] conversationContent;
 
+
     private void Start()
     {
 
