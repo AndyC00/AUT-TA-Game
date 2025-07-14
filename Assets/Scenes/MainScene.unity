@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 482043891}
   - component: {fileID: 482043893}
   - component: {fileID: 482043894}
+  - component: {fileID: 482043895}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -597,6 +598,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 0.03
   period: 4
+--- !u!114 &482043895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482043888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209c045fb0b65724895d206a7c79e0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionButton: {fileID: 230926609}
 --- !u!1 &484975920
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,10 +891,9 @@ GameObject:
   - component: {fileID: 603738229}
   - component: {fileID: 603738230}
   - component: {fileID: 603738231}
-  - component: {fileID: 603738232}
   m_Layer: 0
   m_Name: Woods
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1001,19 +1014,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.711403, y: 2.7462106}
   m_EdgeRadius: 0
---- !u!114 &603738232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603738228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209c045fb0b65724895d206a7c79e0b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionButton: {fileID: 230926609}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

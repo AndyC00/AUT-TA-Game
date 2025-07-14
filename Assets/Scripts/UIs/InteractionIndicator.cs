@@ -14,15 +14,15 @@ public class InteractionIndicator : MonoBehaviour
 
     void Update()
     {
-        if (isInteracting && Keyboard.current.eKey.wasPressedThisFrame)
+        if (isInteracting && Input.GetKeyDown(KeyCode.E))
         {
-            //GameManager.instance.ResourceCount += 1;
+            GameManager.instance.ResourceCount += 1;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Interactable"))
         {
             interactionButton.gameObject.SetActive(true);
             interactionButton.transform.position = transform.position + new Vector3(-1, 1, 0);
@@ -33,11 +33,11 @@ public class InteractionIndicator : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Interactable"))
         {
             interactionButton.gameObject.SetActive(false);
-        }
 
-        isInteracting = false;
+            isInteracting = false;
+        }
     }
 }
