@@ -1,8 +1,24 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    // Resource Count and update
+    [SerializeField] private int _resourceCount;
+    public event Action<int> OnResourceCountChanged;
+    public int ResourceCount
+    {
+        get => _resourceCount;
+        set
+        {
+            if (_resourceCount == value) return;
+
+            _resourceCount = value;
+            OnResourceCountChanged?.Invoke(_resourceCount);
+        }
+    }
+
     // Game States
     public enum GameState
     {
@@ -13,7 +29,7 @@ public class GameManager : MonoBehaviour
     }
 
     public UnityEvent<GameState> OnStateChanged;
-    private GameState currentState;
+    private GameState _currentState;
 
     // singleton pattern
     public static GameManager instance { get; private set; }
@@ -30,16 +46,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        currentState = GameState.Start;
+        _currentState = GameState.Start;
+        _resourceCount = 0;
     }
 
     // --------------- State Management ---------------
     public void ChangeState(GameState newState)
     {
-        if (currentState == newState) { return; }
+        if (_currentState == newState) { return; }
 
-        ExitState(currentState);
-        currentState = newState;
+        ExitState(_currentState);
+        _currentState = newState;
         EnterState(newState);
         OnStateChanged?.Invoke(newState);
 
@@ -69,4 +86,6 @@ public class GameManager : MonoBehaviour
             
         }
     }
+
+
 }
