@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 482043892}
   - component: {fileID: 482043891}
   - component: {fileID: 482043893}
+  - component: {fileID: 482043894}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -582,6 +583,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 7
+--- !u!114 &482043894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482043888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96e14b426433b542b0935fd3b0ba47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.03
+  period: 4
 --- !u!1 &484975920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1654,7 @@ GameObject:
   - component: {fileID: 1229550145}
   - component: {fileID: 1229550149}
   - component: {fileID: 1229550150}
+  - component: {fileID: 1229550151}
   m_Layer: 0
   m_Name: NPC1
   m_TagString: Untagged
@@ -1821,6 +1837,20 @@ MonoBehaviour:
   firstStageConversation: []
   secondStageConversation: []
   thirdStageConversation: []
+--- !u!114 &1229550151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229550142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96e14b426433b542b0935fd3b0ba47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.03
+  period: 4
 --- !u!1 &1339064537
 GameObject:
   m_ObjectHideFlags: 0

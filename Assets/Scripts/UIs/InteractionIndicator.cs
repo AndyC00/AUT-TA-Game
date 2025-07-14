@@ -16,7 +16,7 @@ public class InteractionIndicator : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             interactionButton.gameObject.SetActive(true);
-            interactionButton.transform.position = transform.position + new Vector3(-1, 3, 0);
+            interactionButton.transform.position = transform.position + new Vector3(-1, 1, 0);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
