@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         currentState = GameState.Start;
     }
 
+    // --------------- State Management ---------------
     public void ChangeState(GameState newState)
     {
         if (currentState == newState) { return; }

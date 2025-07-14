@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InteractionManager : MonoBehaviour
+public class InteractionIndicator : MonoBehaviour
 {
     [SerializeField] private GameObject interactionButton;
 
@@ -9,8 +9,6 @@ public class InteractionManager : MonoBehaviour
     {
         interactionButton ??= GameObject.Find("InteractionButton");
         interactionButton.gameObject.SetActive(false);
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,7 +20,7 @@ public class InteractionManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // Trigger interaction here
+                // flipGame.instance.Show(); // start the resource collection game
             }
         }
     }
