@@ -7,6 +7,19 @@ public class Guide : MonoBehaviour
     private NPC npcScript;
     [SerializeField] private string[] firstStageConversation;
     [SerializeField] private string[] secondStageConversation;
+    [SerializeField] private string[] thirdStageConversation;
+
+    // singleton pattern
+    public static Guide instance { get; private set; }
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
 
     void Start()
     {
@@ -17,13 +30,18 @@ public class Guide : MonoBehaviour
         }
     }
 
-    private void OnFirstStageComplete()
+    public void OnFirstStageComplete()
     {
         npcScript.conversationContent = firstStageConversation;
     }
 
-    private void OnSecondStageComplete()
+    public void OnSecondStageComplete()
     {
         npcScript.conversationContent = secondStageConversation;
+    }
+
+    public void OnThirdStageComplete()
+    {
+        npcScript.conversationContent = thirdStageConversation;
     }
 }
