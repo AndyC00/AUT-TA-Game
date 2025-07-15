@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: CardFaceLibrary
   m_EditorClassIdentifier: 
   cardSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6100771674301645356, guid: 7ccbe860c53386c4ba44684008638fab, type: 3}
+  - {fileID: -3367091359966535429, guid: 8f8ef03da537a284ba16c7202cafd4d4, type: 3}
+  - {fileID: -7429177248394979826, guid: ca11fb34bd881bf419e9a47258a336b4, type: 3}
+  - {fileID: 3943207422458339848, guid: abb362fc9aa3ec14d9b3432f249238a6, type: 3}
+  - {fileID: -1915392526249369259, guid: c091397581cfcf546b125164845c5ce3, type: 3}
+  - {fileID: -969259344697701972, guid: febcc8ef85d978e41a74fdc55da23d8d, type: 3}
+  - {fileID: 6236798647291230769, guid: 05825775b20b4054eb5c448edde03a1c, type: 3}
+  - {fileID: -8529277873185666647, guid: d66a6fa804d06344b82235e237076d31, type: 3}
   cardColors:
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0}
+  - {r: 0.22327036, g: 0.46728468, b: 1, a: 0}
+  - {r: 0.48110238, g: 1, b: 0.33962262, a: 0}
+  - {r: 0.9811321, g: 0.70491195, b: 0.34247053, a: 0}

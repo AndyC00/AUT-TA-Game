@@ -6,7 +6,7 @@ namespace CardData
 
     // card data structure:
     [System.Serializable]
-    public struct CardData
+    public struct Card
     {
         public CardColor color;
         public CardIcon icon;
