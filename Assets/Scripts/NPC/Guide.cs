@@ -5,9 +5,14 @@ using UnityEngine;
 public class Guide : MonoBehaviour
 {
     private NPC npcScript;
+
+    [HideInInspector] public bool hasTalked;
     [SerializeField] private string[] firstStageConversation;
+    [SerializeField] private string[] firstStageShort;
     [SerializeField] private string[] secondStageConversation;
+    [SerializeField] private string[] secondStageShort;
     [SerializeField] private string[] thirdStageConversation;
+    [SerializeField] private string[] thirdStageShort;
 
     // singleton pattern
     public static Guide instance { get; private set; }
@@ -43,5 +48,19 @@ public class Guide : MonoBehaviour
     public void OnThirdStageComplete()
     {
         npcScript.conversationContent = thirdStageConversation;
+    }
+
+    public void LoadConversation()
+    {
+        if (!hasTalked) return;
+
+        GameManager.GameState currentState = GameManager.instance.GetCurrentState();
+        npcScript.conversationContent = currentState switch
+        {
+            GameManager.GameState.FirstStage => firstStageShort,
+            GameManager.GameState.SecondStage => secondStageShort,
+            GameManager.GameState.ThirdStage => thirdStageShort,
+            _ => npcScript.conversationContent
+        };
     }
 }

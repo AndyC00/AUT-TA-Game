@@ -1732,7 +1732,7 @@ GameObject:
   - component: {fileID: 1229550150}
   - component: {fileID: 1229550151}
   m_Layer: 0
-  m_Name: NPC1
+  m_Name: Guide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1910,9 +1910,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcb7e3478e0a8048bf7658d60c8c8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasTalked: 0
   firstStageConversation: []
+  firstStageShort: []
   secondStageConversation: []
+  secondStageShort: []
   thirdStageConversation: []
+  thirdStageShort: []
 --- !u!114 &1229550151
 MonoBehaviour:
   m_ObjectHideFlags: 0

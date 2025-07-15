@@ -14,7 +14,8 @@ public class ConversationSystem : MonoBehaviour
     [SerializeField] private Image characterImage;
 
     private List<string> contentList;
-    private int contentIndex = 0;   
+    private int contentIndex = 0;
+
 
     //------------- singleton pattern -------------
     public static ConversationSystem Instance { get; private set; }
@@ -55,6 +56,7 @@ public class ConversationSystem : MonoBehaviour
 
         contentList = new List<string>();
         contentList.AddRange(content);
+        contentIndex = 0;
         conversationText.text = contentList[0];
 
         gameObject.SetActive(true);

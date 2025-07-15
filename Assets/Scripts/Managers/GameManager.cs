@@ -81,11 +81,30 @@ public class GameManager : MonoBehaviour
 
     private void ExitState(GameState state)
     {
-        switch (state)
-        { 
-            
+        //switch (state)
+        //{ 
+        // use for unsubscribing events or cleaning up resources
+        //}
+    }
+
+    public void CheckStateChange()     // triggered by resource count change
+    {
+        switch (_resourceCount)
+        {
+            case > 100 and < 200:
+                ChangeState(GameState.FirstStage);
+                break;
+            case >= 200 and < 300:
+                ChangeState(GameState.SecondStage);
+                break;
+            case >= 300:
+                ChangeState(GameState.ThirdStage);
+                break;
         }
     }
 
-
+    public GameState GetCurrentState()
+    {
+        return _currentState;
+    }
 }

@@ -8,18 +8,19 @@ public class NPC : MonoBehaviour
     [SerializeField] private Sprite CharacterImage;
     public string[] conversationContent;
 
-
-    private void Start()
-    {
-
-
-    }
-
     //show conversation UI once NPC touch the player
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") )
         {
+            switch(transform.name)
+            { 
+                case "Guide":
+                    Guide.instance.LoadConversation();
+                    Guide.instance.hasTalked = true;
+                    break;
+            }
+
             ConversationSystem.Instance.Show(npcName, CharacterImage, conversationContent);
         }
     }
