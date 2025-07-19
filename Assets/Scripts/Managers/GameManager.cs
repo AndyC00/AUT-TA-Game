@@ -4,9 +4,14 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject[] firstStageObjects;
+    [SerializeField] private GameObject[] secondStageObjects;
+    [SerializeField] private GameObject[] thirdStageObjects;
+    [SerializeField] private GameObject[] finalObjects;
+
     // Resource Count and update
     [SerializeField] private int _resourceCount;
-    public event Action<int> OnResourceCountChanged;
+    [HideInInspector] public event Action<int> OnResourceCountChanged;
     public int ResourceCount
     {
         get => _resourceCount;
@@ -64,17 +69,20 @@ public class GameManager : MonoBehaviour
     }
 
     private void EnterState(GameState state)
-    { 
+    {
         switch(state)
-        { 
+        {
             case GameState.FirstStage:
                 Guide.instance.OnFirstStageComplete();
+                onFirstStageEnvironmentChange();
                 break;
             case GameState.SecondStage:
                 Guide.instance.OnSecondStageComplete();
+                onSecondStageEnvironmentChange();
                 break;
             case GameState.ThirdStage:
                 Guide.instance.OnThirdStageComplete();
+                onThirdStageEnvironmentChange();
                 break;
         }
     }
@@ -82,7 +90,7 @@ public class GameManager : MonoBehaviour
     private void ExitState(GameState state)
     {
         //switch (state)
-        //{ 
+        //{
         // use for unsubscribing events or cleaning up resources
         //}
     }
@@ -106,5 +114,38 @@ public class GameManager : MonoBehaviour
     public GameState GetCurrentState()
     {
         return _currentState;
+    }
+
+    private void onFirstStageEnvironmentChange()
+    { 
+        foreach (var gameobject in firstStageObjects)
+        {
+            gameobject.SetActive(false);
+        }
+
+        foreach (var gameobject in secondStageObjects)
+        { 
+            gameObject.SetActive(true);
+        }
+    }
+
+    private void onSecondStageEnvironmentChange()
+    {
+        foreach(var gameobject in secondStageObjects)
+        {
+            gameobject.SetActive(false);
+        }
+        foreach (var gameobject in thirdStageObjects)
+        {
+            gameObject.SetActive(true);
+        }
+    }
+
+    private void onThirdStageEnvironmentChange()
+    {
+        foreach (var gameobject in thirdStageObjects)
+        {
+            gameobject.SetActive(true);
+        }
     }
 }
