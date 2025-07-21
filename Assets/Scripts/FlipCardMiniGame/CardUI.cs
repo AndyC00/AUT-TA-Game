@@ -2,7 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardUI : MonoBehaviour
+using CardData;
+
+public class CardUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image background;
     [SerializeField] private Image iconImage;
@@ -21,5 +23,15 @@ public class CardUI : MonoBehaviour
     {
         if (isLocked) return;
         CardGameManager.Instance.OnCardClicked(this);
+    }
+
+    public void Reveal()
+    {
+        
+    }
+
+    public void Lock()
+    { 
+    
     }
 }

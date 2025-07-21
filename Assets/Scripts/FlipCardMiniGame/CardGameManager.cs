@@ -11,6 +11,8 @@ public class CardGameManager : MonoBehaviour
     [SerializeField] private CardFaceLibrary cardFaceLibrary;
 
     [SerializeField] private int pairCount = 8;
+    private CardUI firstCard = null;
+    public bool inputLocked;
 
     List<CardUI> spawnedCards = new List<CardUI>();
 
@@ -92,10 +94,49 @@ public class CardGameManager : MonoBehaviour
         var randomNum = new System.Random();
         for (int i = list.Count - 1; i > 0; i--)
         {
-            int j = randomNum.Next(0, i + 1);
-            T temp = list[i];
-            list[i] = list[j];
-            list[j] = temp;
+            int k = randomNum.Next(i + 1);
+            (list[i], list[k]) = (list[k], list[i]);
         }
+    }
+
+    public void OnCardClicked(CardUI clickedCard)
+    {
+        if (inputLocked || clickedCard == firstCard) return;
+
+        if (!firstCard)
+        {
+            firstCard = clickedCard;
+            clickedCard.Reveal();
+        }
+        else
+        { 
+            clickedCard.Reveal();
+
+            // if the clicked card matches the first card
+            if (clickedCard.data.Id == firstCard.data.Id)
+            {
+                clickedCard.Lock();
+                firstCard.Lock();
+
+                firstCard = null;
+
+                // reward
+                GameManager.instance.ResourceCount += 10;
+            }
+            else
+            {
+                StartCoroutine(FlipBackRoutine(clickedCard, firstCard));
+                firstCard = null;
+            }
+        }
+    }
+
+    private System.Collections.IEnumerator FlipBackRoutine(CardUI card1, CardUI card2)
+    {
+        inputLocked = true;
+        yield return new WaitForSeconds(0.5f); // wait for 0.5 seconds before flipping back
+        card1.Reveal();
+        card2.Reveal();
+        inputLocked = false;
     }
 }
