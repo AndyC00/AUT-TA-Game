@@ -1,8 +1,8 @@
-﻿using CardData;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System.Net.Sockets;
+
+using CardData;
 
 public class CardGameManager : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class CardGameManager : MonoBehaviour
 
     [SerializeField] private int pairCount = 8;
     private CardUI firstCard = null;
-    public bool inputLocked;
+    [HideInInspector] public bool inputLocked;
 
     List<CardUI> spawnedCards = new List<CardUI>();
 
@@ -103,7 +103,7 @@ public class CardGameManager : MonoBehaviour
     {
         if (inputLocked || clickedCard == firstCard) return;
 
-        if (!firstCard)
+        if (firstCard == null)
         {
             firstCard = clickedCard;
             clickedCard.Reveal();
@@ -135,8 +135,10 @@ public class CardGameManager : MonoBehaviour
     {
         inputLocked = true;
         yield return new WaitForSeconds(0.5f); // wait for 0.5 seconds before flipping back
-        card1.Reveal();
-        card2.Reveal();
+
+        card1.Conceal();
+        card2.Conceal();
+
         inputLocked = false;
     }
 }

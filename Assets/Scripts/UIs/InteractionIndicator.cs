@@ -16,7 +16,7 @@ public class InteractionIndicator : MonoBehaviour
     {
         if (isInteracting && Input.GetKeyDown(KeyCode.E))
         {
-            GameManager.instance.ResourceCount += 1;
+            CardGameUI.Instance.Show();
         }
     }
 
