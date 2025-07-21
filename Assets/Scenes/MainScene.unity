@@ -1359,7 +1359,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 3734695990435204967, guid: aee6d66136852874bbfd4e74095ffc2f, type: 3}
   cardPanel: {fileID: 910849308}
   cardFaceLibrary: {fileID: 11400000, guid: 00ce508859a1abb4c8c74aaf14e2b6a8, type: 2}
-  pairCount: 8
+  pairCount: 9
   inputLocked: 0
 --- !u!1 &733601401
 GameObject:

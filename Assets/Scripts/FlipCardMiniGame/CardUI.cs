@@ -10,21 +10,28 @@ public class CardUI : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image iconImage;
 
     public Card data { get; private set; }
-    private bool isRevealed = false;
-    private bool isLocked = false;
+    private bool isRevealed;
+    private bool isLocked;
 
-    private void Start()
+    private void Awake()
     {
         background = GetComponent<Image>();
-        iconImage ??= transform.Find("Image").GetComponent<Image>();
+        iconImage ??= transform.Find("Image")?.GetComponent<Image>();
     }
 
     public void Setup(Card d, Sprite icon, Color bgColor)
     {
+        background ??= GetComponent<Image>();
+        iconImage ??= transform.Find("Image")?.GetComponent<Image>();
+
         data = d;
         iconImage.sprite = icon;
         background.color = bgColor;
-        Conceal(immediate: true);
+
+        // card starts concealed
+        iconImage.enabled = false;
+        isRevealed = false;
+        isLocked = false;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -41,7 +48,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler
         iconImage.enabled = true;
     }
 
-    public void Conceal(bool immediate = false)
+    public void Conceal()
     {
         if (!isRevealed || isLocked) return;
         isRevealed = false;
