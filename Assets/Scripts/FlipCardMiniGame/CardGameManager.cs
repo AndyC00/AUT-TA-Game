@@ -50,12 +50,12 @@ public class CardGameManager : MonoBehaviour
 
         // generate unique pairs of cards
         var uniquePairs = GenerateUniquePairs(pairCount);
-        Debug.Log($"Unique pairs generated: {uniquePairs.Count}");
+        //Debug.Log($"Unique pairs generated: {uniquePairs.Count}");
 
         var deck = new List<CardData.Card>(pairCount * 2);
         foreach (var card in uniquePairs)
         {
-            Debug.Log($"Unique pairs generated: {uniquePairs.Count}");
+            //Debug.Log($"Unique pairs generated: {uniquePairs.Count}");
 
             deck.Add(card);
             deck.Add(card);
