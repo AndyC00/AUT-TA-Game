@@ -6,8 +6,9 @@ using CardData;
 
 public class CardUI : MonoBehaviour, IPointerClickHandler
 {
-    private Image background;
+    [SerializeField] private Image background;
     [SerializeField] private Image iconImage;
+    [SerializeField] private Sprite matchedIcon;
 
     public Card data { get; private set; }
     private bool isRevealed;
@@ -15,13 +16,13 @@ public class CardUI : MonoBehaviour, IPointerClickHandler
 
     private void Awake()
     {
-        background = GetComponent<Image>();
+        background = transform.Find("BG")?.GetComponent<Image>();
         iconImage ??= transform.Find("Image")?.GetComponent<Image>();
     }
 
     public void Setup(Card d, Sprite icon, Color bgColor)
     {
-        background ??= GetComponent<Image>();
+        background ??= transform.Find("BG")?.GetComponent<Image>();
         iconImage ??= transform.Find("Image")?.GetComponent<Image>();
 
         data = d;
@@ -58,7 +59,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler
     public void Lock()
     {
         isLocked = true;
-        iconImage.sprite = null;
+        iconImage.sprite = matchedIcon;
         background.color = Color.gray;
     }
 }

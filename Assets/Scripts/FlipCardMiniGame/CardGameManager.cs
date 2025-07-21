@@ -11,10 +11,10 @@ public class CardGameManager : MonoBehaviour
     [SerializeField] private CardFaceLibrary cardFaceLibrary;
 
     [SerializeField] private int pairCount = 8;
-    private CardUI firstCard = null;
     [HideInInspector] public bool inputLocked;
 
     List<CardUI> spawnedCards = new List<CardUI>();
+    private CardUI firstCard = null;
 
     // singleton pattern
     public static CardGameManager Instance { get; private set; }
