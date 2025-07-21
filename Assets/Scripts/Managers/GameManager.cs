@@ -118,12 +118,12 @@ public class GameManager : MonoBehaviour
 
     private void onFirstStageEnvironmentChange()
     { 
-        foreach (var gameobject in firstStageObjects)
+        foreach (GameObject gameObject in firstStageObjects)
         {
-            gameobject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
-        foreach (var gameobject in secondStageObjects)
+        foreach (GameObject gameObject in secondStageObjects)
         { 
             gameObject.SetActive(true);
         }
@@ -131,11 +131,11 @@ public class GameManager : MonoBehaviour
 
     private void onSecondStageEnvironmentChange()
     {
-        foreach(var gameobject in secondStageObjects)
+        foreach(GameObject gameObject in secondStageObjects)
         {
-            gameobject.SetActive(false);
+            gameObject.SetActive(false);
         }
-        foreach (var gameobject in thirdStageObjects)
+        foreach (GameObject gameObject in thirdStageObjects)
         {
             gameObject.SetActive(true);
         }
@@ -143,9 +143,9 @@ public class GameManager : MonoBehaviour
 
     private void onThirdStageEnvironmentChange()
     {
-        foreach (var gameobject in thirdStageObjects)
+        foreach (GameObject gameObject in finalObjects)
         {
-            gameobject.SetActive(true);
+            gameObject.SetActive(true);
         }
     }
 }

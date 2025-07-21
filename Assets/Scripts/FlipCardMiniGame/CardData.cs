@@ -1,7 +1,7 @@
 ﻿
 namespace CardData
 { 
-    public enum CardColor { black, Blue, Green, Oragne }
+    public enum CardColor { black, Blue, Green, Orange }
     public enum CardIcon { icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8 }
 
     // card data structure:
