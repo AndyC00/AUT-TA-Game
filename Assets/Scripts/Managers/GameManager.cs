@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,9 +33,10 @@ public class GameManager : MonoBehaviour
         SecondStage,
         ThirdStage
     }
-
-    public UnityEvent<GameState> OnStateChanged;
     private GameState _currentState;
+    [HideInInspector] public UnityEvent<GameState> OnStateChanged;
+
+    private List<NPC> npcs;
 
     // singleton pattern
     public static GameManager instance { get; private set; }
@@ -53,6 +55,8 @@ public class GameManager : MonoBehaviour
     {
         _currentState = GameState.Start;
         _resourceCount = 0;
+
+        GetAllNPCs();
     }
 
     // --------------- State Management ---------------
@@ -73,15 +77,15 @@ public class GameManager : MonoBehaviour
         switch(state)
         {
             case GameState.FirstStage:
-                Guide.instance.OnFirstStageComplete();
+                LoadNpcConversationsOnFirstStage();
                 onFirstStageEnvironmentChange();
                 break;
             case GameState.SecondStage:
-                Guide.instance.OnSecondStageComplete();
+                LoadNpcConversationsOnSecondStage();
                 onSecondStageEnvironmentChange();
                 break;
             case GameState.ThirdStage:
-                Guide.instance.OnThirdStageComplete();
+                LoadNpcConversationsOnThirdStage();
                 onThirdStageEnvironmentChange();
                 break;
         }
@@ -146,6 +150,45 @@ public class GameManager : MonoBehaviour
         foreach (GameObject gameObject in finalObjects)
         {
             gameObject.SetActive(true);
+        }
+    }
+
+    private void GetAllNPCs()
+    {
+        npcs = new List<NPC>();
+
+        GameObject[] allNpcs = GameObject.FindGameObjectsWithTag("NPC");
+        foreach (GameObject npc in allNpcs)
+        { 
+            NPC script = npc.GetComponent<NPC>();
+            if (script != null)
+            {
+                npcs.Add(script);
+            }
+        }
+    }
+
+    private void LoadNpcConversationsOnFirstStage()
+    {
+        foreach (NPC npc in npcs)
+        {
+            npc.OnFirstStageComplete();
+        }
+    }
+
+    private void LoadNpcConversationsOnSecondStage()
+    {
+        foreach (NPC npc in npcs)
+        {
+            npc.OnSecondStageComplete();
+        }
+    }
+
+    private void LoadNpcConversationsOnThirdStage()
+    {
+        foreach (NPC npc in npcs)
+        {
+            npc.OnThirdStageComplete();
         }
     }
 }
