@@ -1186,6 +1186,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPanel: {fileID: 863601548}
+  losePanel: {fileID: 225745843}
+  winningPanel: {fileID: 578178103}
+  resourceText: {fileID: 800591318}
+  winningPageButton: {fileID: 1442610338}
+  losePageButton: {fileID: 1160326845}
+  resourcePoints: 0
 --- !u!114 &535391702
 MonoBehaviour:
   m_ObjectHideFlags: 0

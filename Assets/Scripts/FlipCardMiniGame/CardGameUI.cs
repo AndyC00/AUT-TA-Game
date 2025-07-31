@@ -69,7 +69,7 @@ public class CardGameUI : MonoBehaviour
     }
 
     // winning panel
-    private void ShowWinningPanel()
+    public void ShowWinningPanel()
     {
         resourceText.text = resourcePoints.ToString();
         GameManager.instance.ResourceCount += resourcePoints;
@@ -81,7 +81,7 @@ public class CardGameUI : MonoBehaviour
     }
 
     // lose panel
-    private void ShowLosePanel()
+    public void ShowLosePanel()
     {
         losePanel.SetActive(true);
     }

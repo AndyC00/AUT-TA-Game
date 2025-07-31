@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 using CardData;
+using System.Collections;
 
 public class CardGameManager : MonoBehaviour
 {
@@ -114,7 +115,7 @@ public class CardGameManager : MonoBehaviour
             clickedCard.Reveal();
         }
         else
-        { 
+        {
             clickedCard.Reveal();
 
             // if the clicked card matches the first card
@@ -125,8 +126,15 @@ public class CardGameManager : MonoBehaviour
 
                 firstCard = null;
 
-                // reward
+                // reward count
+                matchedPairs++;
                 CardGameUI.Instance.GainResourcePoints(10);
+
+                // check if the game is won and complete
+                if (matchedPairs >= pairCount)
+                {
+                    StartCoroutine(ShowWinningPage());
+                }
             }
             else
             {
@@ -134,6 +142,16 @@ public class CardGameManager : MonoBehaviour
                 firstCard = null;
             }
         }
+    }
+
+    IEnumerator ShowWinningPage()
+    {
+        inputLocked = true;
+        // play winning sound effect
+
+        yield return new WaitForSeconds(0.4f);
+
+        CardGameUI.Instance.ShowWinningPanel();
     }
 
     private System.Collections.IEnumerator FlipBackRoutine(CardUI card1, CardUI card2)
