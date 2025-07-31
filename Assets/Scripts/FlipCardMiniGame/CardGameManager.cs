@@ -16,6 +16,8 @@ public class CardGameManager : MonoBehaviour
     List<CardUI> spawnedCards = new List<CardUI>();
     private CardUI firstCard = null;
 
+    private int matchedPairs = 0;
+
     // singleton pattern
     public static CardGameManager Instance { get; private set; }
     private void Awake()
@@ -124,7 +126,7 @@ public class CardGameManager : MonoBehaviour
                 firstCard = null;
 
                 // reward
-                GameManager.instance.ResourceCount += 10;
+                CardGameUI.Instance.GainResourcePoints(10);
             }
             else
             {

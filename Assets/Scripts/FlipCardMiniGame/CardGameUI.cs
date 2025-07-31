@@ -1,8 +1,19 @@
+using System.Resources;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardGameUI : MonoBehaviour
 {
     [SerializeField] private GameObject startPanel;
+    [SerializeField] private GameObject losePanel;
+    [SerializeField] private GameObject winningPanel;
+    [SerializeField] private TextMeshProUGUI resourceText;
+
+    [SerializeField] private Button winningPageButton;
+    [SerializeField] private Button losePageButton;
+
+    [SerializeField] private int resourcePoints = 0;
 
     // singleton pattern
     public static CardGameUI Instance { get; private set; }
@@ -22,6 +33,16 @@ public class CardGameUI : MonoBehaviour
     void Start()
     {
         startPanel ??= transform.Find("StartPanel").gameObject;
+
+        losePanel ??= transform.Find("LosePage").gameObject;
+        losePageButton ??= losePanel.transform.Find("ConfirmButton").GetComponent<Button>();
+        losePageButton.onClick.AddListener(Hide);
+
+        winningPanel ??= transform.Find("WinningPage").gameObject;
+        resourceText ??= winningPanel.transform.Find("number").GetComponent<TextMeshProUGUI>();
+        winningPageButton ??= winningPanel.transform.Find("ConfirmButton").GetComponent<Button>();
+        winningPageButton.onClick.AddListener(Hide);
+
         Hide();
     }
 
@@ -42,6 +63,40 @@ public class CardGameUI : MonoBehaviour
     }
     public void Hide()
     {
+        HideWinningPanel();
+        HideLosePanel();
         gameObject.SetActive(false);
+    }
+
+    // winning panel
+    private void ShowWinningPanel()
+    {
+        resourceText.text = resourcePoints.ToString();
+        GameManager.instance.ResourceCount += resourcePoints;
+        winningPanel.SetActive(true);
+    }
+    private void HideWinningPanel()
+    {
+        winningPanel.SetActive(false);
+    }
+
+    // lose panel
+    private void ShowLosePanel()
+    {
+        losePanel.SetActive(true);
+    }
+    private void HideLosePanel()
+    {
+        losePanel.SetActive(false);
+    }
+
+    // resource points
+    public void GainResourcePoints(int num)
+    {
+        resourcePoints += num;
+    }
+    public void ResetResourcePoints()
+    {
+        resourcePoints = 0;
     }
 }

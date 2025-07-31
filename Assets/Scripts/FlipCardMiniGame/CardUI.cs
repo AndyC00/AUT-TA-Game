@@ -17,6 +17,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler
     private bool isRevealed;
     private bool isLocked;
 
+    public bool IsMatched => isLocked;
+
     private void Awake()
     {
         background = transform.Find("BG")?.GetComponent<Image>();
