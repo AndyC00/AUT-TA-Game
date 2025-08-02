@@ -70,11 +70,15 @@ public class CardGameUI : MonoBehaviour
         CardGameManager.Instance.ResetForReplay();
         ResetResourcePoints();
 
+        timerText.text = "02:00";
+
         startPanel.SetActive(true);
     }
 
     public void Hide()
     {
+        timerText.text = string.Empty;
+
         HideWinningPanel();
         HideLosePanel();
         gameObject.SetActive(false);
