@@ -57,7 +57,8 @@ public class CardGameManager : MonoBehaviour
         GameInit();
         CardGameUI.Instance.ResetResourcePoints();
 
-
+        if (timerCo != null) StopCoroutine(timerCo);
+        timerCo = StartCoroutine(TimerRoutine());
     }
 
     private void GameInit()
@@ -196,5 +197,33 @@ public class CardGameManager : MonoBehaviour
         card2.Conceal();
 
         inputLocked = false;
+    }
+
+    private IEnumerator TimerRoutine()
+    { 
+        float t = timeLimit;
+        CardGameUI.Instance.UpdateTimer(t);
+
+        while (t > 0)
+        {
+            yield return null;
+            t -= Time.deltaTime;
+            CardGameUI.Instance.UpdateTimer(t);
+        }
+
+        if (matchedPairs < pairCount)
+        {
+            inputLocked = true;
+            CardGameUI.Instance.ShowLosePanel();
+        }
+    }
+
+    IEnumerator ShowWinningPanel()
+    {
+        inputLocked = true;
+        if (timerCo != null)    StopCoroutine(timerCo);
+
+        yield return new WaitForSeconds(0.4f); // wait for a short time before showing the winning panel
+        CardGameUI.Instance.ShowWinningPanel();
     }
 }

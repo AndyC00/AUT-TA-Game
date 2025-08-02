@@ -15,6 +15,7 @@ public class CardGameUI : MonoBehaviour
     [SerializeField] private Button winningPageButton;
     [SerializeField] private Button losePageButton;
 
+    [SerializeField] private TextMeshProUGUI timerText;
 
     // singleton pattern
     public static CardGameUI Instance { get; private set; }
@@ -43,6 +44,8 @@ public class CardGameUI : MonoBehaviour
         resourceText ??= winningPanel.transform.Find("number").GetComponent<TextMeshProUGUI>();
         winningPageButton ??= winningPanel.transform.Find("ConfirmButton").GetComponent<Button>();
         winningPageButton.onClick.AddListener(Hide);
+
+        timerText ??= transform.Find("TimerText").GetComponent<TextMeshProUGUI>();
 
         Hide();
     }
@@ -107,5 +110,17 @@ public class CardGameUI : MonoBehaviour
     public void ResetResourcePoints()
     {
         resourcePoints = 0;
+    }
+
+    // Timer display
+    public void UpdateTimer(float timeLeft)
+    { 
+        timeLeft = Mathf.Max(0, timeLeft);
+
+        int seconds = Mathf.CeilToInt(timeLeft);
+        int minutes = seconds / 60;
+        int sec = seconds % 60;
+
+        timerText.text = $"{minutes:00}:{sec:00}";
     }
 }
