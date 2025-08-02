@@ -8,12 +8,13 @@ public class CardGameUI : MonoBehaviour
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject winningPanel;
+
     [SerializeField] private TextMeshProUGUI resourceText;
+    [SerializeField] private int resourcePoints = 0;
 
     [SerializeField] private Button winningPageButton;
     [SerializeField] private Button losePageButton;
 
-    [SerializeField] private int resourcePoints = 0;
 
     // singleton pattern
     public static CardGameUI Instance { get; private set; }
@@ -53,6 +54,8 @@ public class CardGameUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
                 startPanel.SetActive(false);
+
+                CardGameManager.Instance.StartGame();
             }
         }
     }
@@ -60,7 +63,13 @@ public class CardGameUI : MonoBehaviour
     public void Show()
     { 
         gameObject.SetActive(true);
+
+        CardGameManager.Instance.ResetForReplay();
+        ResetResourcePoints();
+
+        startPanel.SetActive(true);
     }
+
     public void Hide()
     {
         HideWinningPanel();

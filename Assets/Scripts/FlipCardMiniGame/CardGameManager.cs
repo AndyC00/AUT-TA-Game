@@ -19,6 +19,11 @@ public class CardGameManager : MonoBehaviour
 
     private int matchedPairs = 0;
 
+    private bool gameStarted;
+
+    [SerializeField] private float timeLimit = 120.0f;
+    private Coroutine timerCo;
+
     // singleton pattern
     public static CardGameManager Instance { get; private set; }
     private void Awake()
@@ -38,7 +43,21 @@ public class CardGameManager : MonoBehaviour
         if (!cardPrefab) Debug.LogError("CardPrefab is not assigned in the inspector.");
         cardPanel ??= transform.Find("CardPanel").gameObject;
 
+        inputLocked = true;
+    }
+
+    public void StartGame()
+    {
+        if (gameStarted) return;
+
+        gameStarted = true;
+        inputLocked = false;
+        matchedPairs = 0;
+
         GameInit();
+        CardGameUI.Instance.ResetResourcePoints();
+
+
     }
 
     private void GameInit()
@@ -74,6 +93,20 @@ public class CardGameManager : MonoBehaviour
             card.Setup(data, sprite, color);
             spawnedCards.Add(card);
         }
+    }
+
+    public void ResetForReplay()
+    {
+        foreach (Transform child in cardPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        spawnedCards.Clear();
+
+        matchedPairs = 0;
+        firstCard = null;
+        inputLocked = true;
+        gameStarted = false;
     }
 
     public List<Card> GenerateUniquePairs(int pairCount)
