@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 using CardData;
-using System.Collections;
+
 
 public class CardGameManager : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class CardGameManager : MonoBehaviour
 
     private bool gameStarted;
 
-    [SerializeField] private float timeLimit = 120.0f;
+    [SerializeField] private float timeLimit = 90.0f;
     private Coroutine timerCo;
 
     // singleton pattern
@@ -98,6 +99,8 @@ public class CardGameManager : MonoBehaviour
 
     public void ResetForReplay()
     {
+        if (timerCo != null) { StopCoroutine(timerCo); timerCo = null; }
+
         foreach (Transform child in cardPanel.transform)
         {
             Destroy(child.gameObject);
@@ -167,7 +170,7 @@ public class CardGameManager : MonoBehaviour
                 // check if the game is won and complete
                 if (matchedPairs >= pairCount)
                 {
-                    StartCoroutine(ShowWinningPage());
+                    StartCoroutine(ShowWinningPanel());
                 }
             }
             else
@@ -178,17 +181,7 @@ public class CardGameManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShowWinningPage()
-    {
-        inputLocked = true;
-        // play winning sound effect
-
-        yield return new WaitForSeconds(0.4f);
-
-        CardGameUI.Instance.ShowWinningPanel();
-    }
-
-    private System.Collections.IEnumerator FlipBackRoutine(CardUI card1, CardUI card2)
+    private IEnumerator FlipBackRoutine(CardUI card1, CardUI card2)
     {
         inputLocked = true;
         yield return new WaitForSeconds(0.5f); // wait for 0.5 seconds before flipping back
@@ -221,7 +214,14 @@ public class CardGameManager : MonoBehaviour
     IEnumerator ShowWinningPanel()
     {
         inputLocked = true;
-        if (timerCo != null)    StopCoroutine(timerCo);
+
+        if (timerCo != null)
+        {
+            StopCoroutine(timerCo);
+            timerCo = null;
+        }
+
+        CardGameUI.Instance.HideTimer();
 
         yield return new WaitForSeconds(0.4f); // wait for a short time before showing the winning panel
         CardGameUI.Instance.ShowWinningPanel();
