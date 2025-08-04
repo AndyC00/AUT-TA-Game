@@ -50,16 +50,19 @@ public class NPC : MonoBehaviour
     public void OnFirstStageComplete()
     {
         conversationContent = appliedDatabase.firstStageConversation;
+        hasTalked = false;
     }
 
     public void OnSecondStageComplete()
     {
         conversationContent = appliedDatabase.secondStageConversation;
+        hasTalked = false;
     }
 
     public void OnThirdStageComplete()
     {
         conversationContent = appliedDatabase.thirdStageConversation;
+        hasTalked = false;
     }
 
     public void LoadConversation()
