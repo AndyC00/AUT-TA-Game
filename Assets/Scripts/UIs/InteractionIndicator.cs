@@ -6,6 +6,7 @@ public class InteractionIndicator : MonoBehaviour
     [SerializeField] private GameObject interactionButton;
     [SerializeField] private Vector3 buttonPosition = new Vector3(-0.5f, 1, 0);
     private bool isInteracting = false;
+    private string interactionItemName = string.Empty;
 
     void Start()
     {
@@ -15,9 +16,19 @@ public class InteractionIndicator : MonoBehaviour
 
     void Update()
     {
-        if (isInteracting && Input.GetKeyDown(KeyCode.E))
+        if (isInteracting && (interactionItemName == "Woods") && Input.GetKeyDown(KeyCode.E))
         {
             CardGameUI.Instance.Show();
+        }
+        else if (isInteracting && (interactionItemName == "MotorBikeToForrest") && Input.GetKeyDown(KeyCode.E))
+        {
+            // player move to forest
+            transform.position = new Vector3(-61.36f, -0.92f, 0);
+        }
+        else if (isInteracting && (interactionItemName == "MotorBikeToTown") && Input.GetKeyDown(KeyCode.E))
+        {
+            // player move to town
+            transform.position = new Vector3(-8.27f, -0.92f, 0);
         }
     }
 
@@ -29,6 +40,7 @@ public class InteractionIndicator : MonoBehaviour
             interactionButton.transform.position = transform.position + buttonPosition;
 
             isInteracting = true;
+            interactionItemName = collision.gameObject.name;
         }
         else if (collision.gameObject.CompareTag("NPC"))
         {
