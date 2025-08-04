@@ -10,7 +10,8 @@ public class ConversationSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI conversationText;
     [SerializeField] private Button nextButton;
-    [SerializeField] private Image characterImage;
+    [SerializeField] private Sprite characterSprite;
+    private Image characterImage;
 
     private List<string> contentList;
     private int contentIndex = 0;
@@ -36,6 +37,7 @@ public class ConversationSystem : MonoBehaviour
         nameText ??= transform.Find("NPCname").GetComponent<TextMeshProUGUI>();
         conversationText ??= transform.Find("ConversationText").GetComponent<TextMeshProUGUI>();
         characterImage ??= transform.Find("CharacterImage").GetComponent<Image>();
+        characterSprite = characterImage.sprite;
 
         nextButton ??= transform.Find("NextButton").GetComponent<Button>();
         nextButton.onClick.AddListener(this.OnNextButtonClick);
@@ -51,7 +53,7 @@ public class ConversationSystem : MonoBehaviour
     public void Show(string name, Sprite image, string[] content)
     {
         nameText.text = name;
-        characterImage.sprite = image;
+        characterSprite = image;
 
         contentList = new List<string>();
         contentList.AddRange(content);
