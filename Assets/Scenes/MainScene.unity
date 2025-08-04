@@ -1071,6 +1071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionButton: {fileID: 230926609}
+  buttonPosition: {x: -0.5, y: 1, z: 0}
 --- !u!1 &484975920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1329,8 @@ MonoBehaviour:
   winningPageButton: {fileID: 1442610338}
   losePageButton: {fileID: 1160326845}
   timerText: {fileID: 0}
+  firstFadePeriod: 1
+  secondFadePeriod: 0.5
 --- !u!114 &535391702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1547,8 +1550,8 @@ Transform:
   m_GameObject: {fileID: 603738228}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.84, y: 1.16, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -37.84, y: 0.52, z: 0}
+  m_LocalScale: {x: 0.38717, y: 0.38717, z: 0.38717}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 962917743}
@@ -1597,12 +1600,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -5415152390355213561, guid: 1aae26facb52fe640bf9380ab48e4a8e, type: 3}
+  m_Sprite: {fileID: 3793571362749045945, guid: 7218ab76e52038641b865e63a17820c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 13.21, y: 8.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1642,17 +1645,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.115859985, y: 0.08689475}
+  m_Offset: {x: -0.14506221, y: -1.4169462}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.87, y: 2.92}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 13.21, y: 8.72}
+    newSize: {x: 13.21, y: 8.72}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.711403, y: 2.7462106}
+  m_Size: {x: 12.1758175, y: 5.7538924}
   m_EdgeRadius: 0
 --- !u!1 &619394800
 GameObject:

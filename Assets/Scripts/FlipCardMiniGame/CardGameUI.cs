@@ -1,4 +1,3 @@
-using System.Resources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +15,9 @@ public class CardGameUI : MonoBehaviour
     [SerializeField] private Button losePageButton;
 
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private float firstFadePeriod = 1.0f;
+    [SerializeField] private float secondFadePeriod = 0.5f;
+    private Color timerTextBaseColor;
 
     // singleton pattern
     public static CardGameUI Instance { get; private set; }
@@ -46,6 +48,7 @@ public class CardGameUI : MonoBehaviour
         winningPageButton.onClick.AddListener(Hide);
 
         timerText ??= transform.Find("TimerText").GetComponent<TextMeshProUGUI>();
+        timerTextBaseColor = timerText.color;
 
         Hide();
     }
@@ -77,6 +80,9 @@ public class CardGameUI : MonoBehaviour
 
     public void Hide()
     {
+        timerText.text = string.Empty;
+        timerText.color = timerTextBaseColor;
+
         HideWinningPanel();
         HideLosePanel();
         gameObject.SetActive(false);
@@ -117,6 +123,7 @@ public class CardGameUI : MonoBehaviour
     // Timer display
     public void UpdateTimer(float timeLeft)
     { 
+        // update text
         timeLeft = Mathf.Max(0, timeLeft);
 
         int seconds = Mathf.CeilToInt(timeLeft);
@@ -124,7 +131,22 @@ public class CardGameUI : MonoBehaviour
         int sec = seconds % 60;
 
         timerText.text = $"{minutes:00}:{sec:00}";
+
+        // update text color
+        if (timeLeft <= 20f)
+            ApplyBlink(Color.red, secondFadePeriod);
+        else if (timeLeft <= 45f)
+            ApplyBlink(Color.yellow, firstFadePeriod);
+        else
+            timerText.color = timerTextBaseColor;
     }
 
     public void HideTimer() => timerText.text = string.Empty;
+
+    private void ApplyBlink(Color target, float period)
+    {
+        float alpha = (Mathf.Sin(Time.time * (Mathf.PI * 2f) / period) + 1f) * 0.5f;
+        target.a = alpha;
+        timerText.color = target;
+    }
 }
