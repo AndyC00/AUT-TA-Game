@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Collections;
+
 
 public class InteractionIndicator : MonoBehaviour
 {
@@ -37,12 +38,13 @@ public class InteractionIndicator : MonoBehaviour
         else if (isInteracting && (interactionItemName == "MotorBikeToForrest") && Input.GetKeyDown(KeyCode.E))
         {
             // player move to forest
-            PlayerTransmission.Instance.TeleportTo(new Vector3(-56.02f, -0.92f, 0));
+            StartCoroutine(FadeAndTeleport(new Vector3(-56.02f, -0.92f, 0)));
         }
         else if (isInteracting && (interactionItemName == "MotorBikeToTown") && Input.GetKeyDown(KeyCode.E))
         {
             // player move to town
-            PlayerTransmission.Instance.TeleportTo(new Vector3(-4.94f, -0.92f, 0));
+            ScreenFadeAnime.Instance.Play();
+            StartCoroutine(FadeAndTeleport(new Vector3(-4.94f, -0.92f, 0)));
         }
     }
 
@@ -83,5 +85,12 @@ public class InteractionIndicator : MonoBehaviour
         {
             interactionButton.SetActive(false);
         }
+    }
+
+    private IEnumerator FadeAndTeleport(Vector3 target)
+    {
+        ScreenFadeAnime.Instance.Play();
+        yield return new WaitForSeconds(1f);    //delay for 1 second
+        PlayerTransmission.Instance.TeleportTo(target);
     }
 }
