@@ -10,23 +10,25 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerControls controls;
+    private SpriteRenderer spriteRenderer;
 
     private float moveInput;
     private bool jumpQueued;
 
+    private bool facingRight = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         controls = new PlayerControls();
-
         controls.Player.Move.performed += ctx =>
         {
             //Debug.Log($"MoveInput = {moveInput}");
             moveInput = ctx.ReadValue<Vector2>().x;
         };
         controls.Player.Move.canceled += _ => moveInput = 0f;
-
         controls.Player.Jump.performed += _ => jumpQueued = true;
     }
 
@@ -43,5 +45,17 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
         jumpQueued = false;
+    }
+
+    void Update()
+    {
+        if (moveInput > 0 && !facingRight) Flip();
+        else if (moveInput < 0 && facingRight) Flip();
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        spriteRenderer.flipX = facingRight;
     }
 }
