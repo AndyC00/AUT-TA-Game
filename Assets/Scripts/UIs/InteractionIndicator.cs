@@ -29,6 +29,11 @@ public class InteractionIndicator : MonoBehaviour
 
             isInteracting = true;
         }
+        else if (collision.gameObject.CompareTag("NPC"))
+        {
+            interactionButton.gameObject.SetActive(true);
+            interactionButton.transform.position = transform.position + new Vector3(-1, 1, 0);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -38,6 +43,10 @@ public class InteractionIndicator : MonoBehaviour
             interactionButton.gameObject.SetActive(false);
 
             isInteracting = false;
+        }
+        else if (collision.gameObject.CompareTag("NPC"))
+        {
+            interactionButton.gameObject.SetActive(false);
         }
     }
 }

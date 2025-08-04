@@ -12,26 +12,34 @@ public class NPC : MonoBehaviour
     public string[] conversationContent;
     [HideInInspector] public bool hasTalked;
 
+    private bool isInteracting = false;
+
     private void Start()
     {
         appliedDatabase = transform.GetComponent<ConversationDatabase>();
         hasTalked = false;
     }
 
-    //show conversation UI once NPC touch the player
-    void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player") )
+        if (isInteracting && Input.GetKeyDown(KeyCode.E))
         {
             LoadConversation();
             hasTalked = true;
-
             ConversationSystem.Instance.Show(npcName, CharacterImage, conversationContent);
         }
     }
 
+    //show conversation UI once NPC touch the player
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        isInteracting = true;
+    }
+
     void OnCollisionExit2D(Collision2D collision)
     {
+        isInteracting = false;
+
         if (collision.gameObject.CompareTag("Player"))
         {
             ConversationSystem.Instance.Hide();
