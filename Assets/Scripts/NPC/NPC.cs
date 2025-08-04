@@ -31,17 +31,18 @@ public class NPC : MonoBehaviour
     }
 
     //show conversation UI once NPC touch the player
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        isInteracting = true;
+        if (collision.gameObject.CompareTag("Player"))
+            isInteracting = true;
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        isInteracting = false;
-
         if (collision.gameObject.CompareTag("Player"))
         {
+            isInteracting = false;
+
             ConversationSystem.Instance.Hide();
         }
     }

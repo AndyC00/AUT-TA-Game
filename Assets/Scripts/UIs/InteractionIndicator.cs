@@ -37,12 +37,12 @@ public class InteractionIndicator : MonoBehaviour
         else if (isInteracting && (interactionItemName == "MotorBikeToForrest") && Input.GetKeyDown(KeyCode.E))
         {
             // player move to forest
-            PlayerTransmission.Instance.TeleportTo(new Vector3(-61.36f, -0.92f, 0));
+            PlayerTransmission.Instance.TeleportTo(new Vector3(-56.02f, -0.92f, 0));
         }
         else if (isInteracting && (interactionItemName == "MotorBikeToTown") && Input.GetKeyDown(KeyCode.E))
         {
             // player move to town
-            PlayerTransmission.Instance.TeleportTo(new Vector3(-8.27f, -0.92f, 0));
+            PlayerTransmission.Instance.TeleportTo(new Vector3(-4.94f, -0.92f, 0));
         }
     }
 
@@ -56,11 +56,6 @@ public class InteractionIndicator : MonoBehaviour
             isInteracting = true;
             interactionItemName = collision.gameObject.name;
         }
-        else if (collision.gameObject.CompareTag("NPC"))
-        {
-            interactionButton.gameObject.SetActive(true);
-            interactionButton.transform.position = transform.position + buttonPosition;
-        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -71,9 +66,22 @@ public class InteractionIndicator : MonoBehaviour
 
             isInteracting = false;
         }
-        else if (collision.gameObject.CompareTag("NPC"))
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("NPC"))
         {
-            interactionButton.gameObject.SetActive(false);
+            interactionButton.SetActive(true);
+            interactionButton.transform.position = transform.position + buttonPosition;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            interactionButton.SetActive(false);
         }
     }
 }
