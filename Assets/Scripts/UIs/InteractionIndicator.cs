@@ -8,6 +8,20 @@ public class InteractionIndicator : MonoBehaviour
     private bool isInteracting = false;
     private string interactionItemName = string.Empty;
 
+    // singleton pattern
+    public static InteractionIndicator Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         interactionButton ??= GameObject.Find("InteractionButton");
@@ -23,12 +37,12 @@ public class InteractionIndicator : MonoBehaviour
         else if (isInteracting && (interactionItemName == "MotorBikeToForrest") && Input.GetKeyDown(KeyCode.E))
         {
             // player move to forest
-            transform.position = new Vector3(-61.36f, -0.92f, 0);
+            PlayerTransmission.Instance.TeleportTo(new Vector3(-61.36f, -0.92f, 0));
         }
         else if (isInteracting && (interactionItemName == "MotorBikeToTown") && Input.GetKeyDown(KeyCode.E))
         {
             // player move to town
-            transform.position = new Vector3(-8.27f, -0.92f, 0);
+            PlayerTransmission.Instance.TeleportTo(new Vector3(-8.27f, -0.92f, 0));
         }
     }
 

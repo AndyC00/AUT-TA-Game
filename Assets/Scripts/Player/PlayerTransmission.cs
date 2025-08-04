@@ -1,0 +1,17 @@
+using System;
+using UnityEngine;
+
+public class PlayerTransmission : MonoBehaviour
+{
+    // singleton pattern
+    public static PlayerTransmission Instance { get; private set; }
+
+    public static event Action<float> OnTeleported;
+
+    public void TeleportTo(Vector3 worldPos)
+    {
+        transform.position = worldPos;
+
+        OnTeleported?.Invoke(worldPos.x);
+    }
+}
