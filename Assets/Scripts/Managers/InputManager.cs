@@ -38,5 +38,10 @@ public class InputManager : MonoBehaviour
         {
             Cursor.SetCursor(defaultMouseIcon, hotSpot, mode);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))    // Testing use only
+        {
+            GameManager.instance.ResourceCount += 90;
+        }
     }
 }

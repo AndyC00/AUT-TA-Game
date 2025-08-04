@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] secondStageObjects;
     [SerializeField] private GameObject[] thirdStageObjects;
     [SerializeField] private GameObject[] finalObjects;
+
+    const int firstStageResourceCount = 80;
+    const int secondStageResourceCount = 170;
+    const int thirdStageResourceCount = 300;
+
+    [SerializeField] private GameObject globalLight;
+    private Light2D globalLightComponent;
 
     // Resource Count and update
     [SerializeField] private int _resourceCount;
@@ -22,6 +31,7 @@ public class GameManager : MonoBehaviour
 
             _resourceCount = value;
             OnResourceCountChanged?.Invoke(_resourceCount);
+            CheckStateChange();
         }
     }
 
@@ -55,6 +65,9 @@ public class GameManager : MonoBehaviour
     {
         _currentState = GameState.Start;
         _resourceCount = 0;
+
+        globalLight ??= GameObject.Find("GlobalLight");
+        globalLightComponent = globalLight.GetComponent<Light2D>();
 
         GetAllNPCs();
     }
@@ -103,13 +116,13 @@ public class GameManager : MonoBehaviour
     {
         switch (_resourceCount)
         {
-            case > 100 and < 200:
+            case >= firstStageResourceCount and < secondStageResourceCount:
                 ChangeState(GameState.FirstStage);
                 break;
-            case >= 200 and < 300:
+            case >= secondStageResourceCount and < thirdStageResourceCount:
                 ChangeState(GameState.SecondStage);
                 break;
-            case >= 300:
+            case >= thirdStageResourceCount:
                 ChangeState(GameState.ThirdStage);
                 break;
         }
@@ -126,11 +139,14 @@ public class GameManager : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
         foreach (GameObject gameObject in secondStageObjects)
         { 
             gameObject.SetActive(true);
         }
+
+        // changed to noon:
+        globalLightComponent.color = Color.white;
+        globalLightComponent.intensity = 1.2f;
     }
 
     private void onSecondStageEnvironmentChange()
@@ -143,6 +159,10 @@ public class GameManager : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+
+        // changed to afternoon:
+        globalLightComponent.color = new Color(1f, 0.8f, 0.6f);
+        globalLightComponent.intensity = 1.0f;
     }
 
     private void onThirdStageEnvironmentChange()
@@ -151,6 +171,10 @@ public class GameManager : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+
+        // changed to evening:
+        globalLightComponent.color = Color.white;
+        globalLightComponent.intensity = 0.5f;
     }
 
     private void GetAllNPCs()
