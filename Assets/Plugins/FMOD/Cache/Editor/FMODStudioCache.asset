@@ -64,8 +64,7 @@ MonoBehaviour:
     Data3: 1015520389
     Data4: -1378729447
   Banks:
-  - {fileID: 5775303894944334450}
-  - {fileID: 973913612751001631}
+  - {fileID: 1339097760380011336}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -119,8 +118,7 @@ MonoBehaviour:
     Data3: -865596794
     Data4: 190372120
   Banks:
-  - {fileID: 5775303894944334450}
-  - {fileID: 973913612751001631}
+  - {fileID: 1339097760380011336}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -128,6 +126,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4000
+--- !u!114 &-3760357192384114140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638900049589494957
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-1599404721146611933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,13 +204,10 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 5001102143179663036}
-  - {fileID: 2594135013121548756}
-  - {fileID: 5775303894944334450}
-  - {fileID: 2786653720808464029}
-  - {fileID: 8843327749814646508}
-  - {fileID: 3209102760252233091}
-  - {fileID: 973913612751001631}
+  - {fileID: 7905387926515237079}
+  - {fileID: 8953025483117707619}
+  - {fileID: -3760357192384114140}
+  - {fileID: 1339097760380011336}
   EditorEvents:
   - {fileID: 1518998982311666087}
   - {fileID: 3947854404627555654}
@@ -203,12 +216,11 @@ MonoBehaviour:
   - {fileID: -8369437815966233289}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2594135013121548756}
-  - {fileID: 3209102760252233091}
+  - {fileID: -3760357192384114140}
   StringsBanks:
-  - {fileID: 2786653720808464029}
+  - {fileID: 7905387926515237079}
   cacheVersion: 131847
-  cacheTime: 638899991964173032
+  cacheTime: 638900049589872371
   SerializableEventsDict:
   - key: event:/LastBGM
     index: 0
@@ -220,24 +232,6 @@ MonoBehaviour:
     index: 3
   - key: event:/cardMatch
     index: 4
---- !u!114 &973913612751001631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Music&Sound/Desktop/Sounds.bank
-  Name: Desktop/Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 638899991964173032
-  FileSizes: []
-  Exists: 1
 --- !u!114 &1151115594800679766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +259,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 72071
+--- !u!114 &1339097760380011336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Sounds.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Desktop/Sounds.bank
+  Name: Sounds
+  StudioPath: bank:/Sounds
+  lastModified: 638900049589872371
+  FileSizes: []
+  Exists: 1
 --- !u!114 &1410889607413950462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,8 +314,7 @@ MonoBehaviour:
     Data3: -793123967
     Data4: 1030588846
   Banks:
-  - {fileID: 5001102143179663036}
-  - {fileID: 8843327749814646508}
+  - {fileID: 8953025483117707619}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -311,62 +322,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39941
---- !u!114 &2594135013121548756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Music&Sound/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638899961139992266
-  FileSizes: []
-  Exists: 1
---- !u!114 &2786653720808464029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Music&Sound/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638899961140013397
-  FileSizes:
-  - Name: 
-    Value: 1042
-  Exists: 1
---- !u!114 &3209102760252233091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Music&Sound/Desktop/Master.bank
-  Name: Desktop/Master
-  StudioPath: bank:/Master
-  lastModified: 638899991962966074
-  FileSizes: []
-  Exists: 1
 --- !u!114 &3947854404627555654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,8 +341,7 @@ MonoBehaviour:
     Data3: 2057251740
     Data4: -28481020
   Banks:
-  - {fileID: 5001102143179663036}
-  - {fileID: 8843327749814646508}
+  - {fileID: 8953025483117707619}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -395,42 +349,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 187992
---- !u!114 &5001102143179663036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/BGM.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Music&Sound/BGM.bank
-  Name: BGM
-  StudioPath: bank:/BGM
-  lastModified: 638899961186994341
-  FileSizes: []
-  Exists: 1
---- !u!114 &5775303894944334450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Sounds.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Music&Sound/Sounds.bank
-  Name: Sounds
-  StudioPath: bank:/Sounds
-  lastModified: 638899961188650349
-  FileSizes: []
-  Exists: 1
 --- !u!114 &5823120516936191857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +376,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39941
+--- !u!114 &7905387926515237079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638900049589506004
+  FileSizes:
+  - Name: 
+    Value: 1042
+  Exists: 1
 --- !u!114 &8671322791952454637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,8 +433,7 @@ MonoBehaviour:
     Data3: 487496621
     Data4: 596496864
   Banks:
-  - {fileID: 5001102143179663036}
-  - {fileID: 8843327749814646508}
+  - {fileID: 8953025483117707619}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -504,7 +441,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 72071
---- !u!114 &8843327749814646508
+--- !u!114 &8953025483117707619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -514,11 +451,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/BGM.bank
+  m_Name: bank:/BGM.bank
   m_EditorClassIdentifier: 
-  Path: Assets/Music&Sound/Desktop/BGM.bank
-  Name: Desktop/BGM
+  Path: Assets/StreamingAssets/Desktop/BGM.bank
+  Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638899991962931019
+  lastModified: 638900049589454635
   FileSizes: []
   Exists: 1

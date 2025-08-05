@@ -39,6 +39,15 @@ public class InputManager : MonoBehaviour
             Cursor.SetCursor(defaultMouseIcon, hotSpot, mode);
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))    // Testing use only
         {
             GameManager.instance.ResourceCount += 90;
