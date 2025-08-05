@@ -29,7 +29,7 @@ public class InteractionIndicator : MonoBehaviour
         interactionButton.gameObject.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
         if (isInteracting && (interactionItemName == "Woods") && Input.GetKeyDown(KeyCode.E))
         {
@@ -45,6 +45,14 @@ public class InteractionIndicator : MonoBehaviour
             // player move to town
             ScreenFadeAnime.Instance.Play();
             StartCoroutine(FadeAndTeleport(new Vector3(-4.94f, -0.92f, 0)));
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (interactionButton.activeSelf)
+        {
+            interactionButton.transform.position = transform.position + buttonPosition;
         }
     }
 

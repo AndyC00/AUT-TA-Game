@@ -175,6 +175,8 @@ public class GameManager : MonoBehaviour
         // changed to evening:
         globalLightComponent.color = Color.white;
         globalLightComponent.intensity = 0.5f;
+
+        MoveSoldierToTower();
     }
 
     private void GetAllNPCs()
@@ -214,5 +216,11 @@ public class GameManager : MonoBehaviour
         {
             npc.OnThirdStageComplete();
         }
+    }
+
+    private void MoveSoldierToTower()
+    { 
+        GameObject soldier = GameObject.Find("Soldier_Grey");
+        soldier.transform.position = new Vector3(8.3f, -0.35f, 0);
     }
 }
