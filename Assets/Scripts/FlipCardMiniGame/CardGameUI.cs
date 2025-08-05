@@ -94,6 +94,8 @@ public class CardGameUI : MonoBehaviour
         resourceText.text = resourcePoints.ToString();
         GameManager.instance.ResourceCount += resourcePoints;
         winningPanel.SetActive(true);
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/cardGameComplete");
     }
     private void HideWinningPanel()
     {
