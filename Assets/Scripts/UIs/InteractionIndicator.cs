@@ -44,7 +44,7 @@ public class InteractionIndicator : MonoBehaviour
         {
             // player move to town
             ScreenFadeAnime.Instance.Play();
-            StartCoroutine(FadeAndTeleport(new Vector3(-4.94f, -0.92f, 0)));
+            StartCoroutine(FadeAndTeleport(new Vector3(0.4f, -0.92f, 0)));
         }
     }
 

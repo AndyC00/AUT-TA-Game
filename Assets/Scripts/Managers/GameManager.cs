@@ -177,6 +177,11 @@ public class GameManager : MonoBehaviour
         globalLightComponent.intensity = 0.5f;
 
         MoveSoldierToTower();
+
+        // music change:
+        MusicController.Instance.PauseMainSong();
+        MusicController.Instance.StopMainBGM();
+        MusicController.Instance.PlayLastStageBGM();
     }
 
     private void GetAllNPCs()

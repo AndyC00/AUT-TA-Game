@@ -67,7 +67,9 @@ public class CardGameUI : MonoBehaviour
     }
 
     public void Show()
-    { 
+    {
+        MusicController.Instance.PauseMainBGM();
+
         gameObject.SetActive(true);
 
         CardGameManager.Instance.ResetForReplay();
@@ -80,6 +82,8 @@ public class CardGameUI : MonoBehaviour
 
     public void Hide()
     {
+        MusicController.Instance.ResumeMainBGM();
+
         timerText.text = string.Empty;
         timerText.color = timerTextBaseColor;
 
