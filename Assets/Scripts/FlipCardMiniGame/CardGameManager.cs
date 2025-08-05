@@ -165,6 +165,7 @@ public class CardGameManager : MonoBehaviour
                 // reward count
                 matchedPairs++;
                 CardGameUI.Instance.GainResourcePoints(10);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/cardMatch");
 
                 // check if the game is won and complete
                 if (matchedPairs >= pairCount)

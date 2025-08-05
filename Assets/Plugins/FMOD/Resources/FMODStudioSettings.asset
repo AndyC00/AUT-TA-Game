@@ -477,8 +477,11 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
+  - Desktop/Master
   Banks:
   - BGM
+  - Desktop/BGM
+  - Desktop/Sounds
   - Sounds
   BanksToLoad:
   - BGM
