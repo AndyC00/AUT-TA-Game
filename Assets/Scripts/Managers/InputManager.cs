@@ -39,13 +39,21 @@ public class InputManager : MonoBehaviour
             Cursor.SetCursor(defaultMouseIcon, hotSpot, mode);
         }
 
+        // Esc key to quit menus and game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            if (ConversationSystem.Instance.gameObject.activeSelf)
+            {
+                ConversationSystem.Instance.Hide();
+            }
+            else  //quit the game
+            {
+                Application.Quit();
 
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+                UnityEditor.EditorApplication.isPlaying = false;
 #endif
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Q))    // Testing use only
